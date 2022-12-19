@@ -1,7 +1,6 @@
 package com.sintad.prueba.controller;
 
 
-import com.mysql.cj.protocol.x.Ok;
 import com.sintad.prueba.dto.request.LoginRequest;
 import com.sintad.prueba.dto.request.RegisterRequest;
 import com.sintad.prueba.dto.response.JWTResponse;
@@ -118,8 +117,7 @@ public class AuthController {
         user.setEmail(registerRequest.getEmail());
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         rolService.createRol();
-        Rol roles = rolRepository.findByName(ERol.ADMIN)
-                        .orElseThrow(() -> new RuntimeException("No se encontro el rol"));;
+        Rol roles = rolRepository.findByName(ERol.ADMIN).orElse(rolService.createRol());
         user.setRoles(Collections.singleton(roles));
 
         userRepository.save(user);

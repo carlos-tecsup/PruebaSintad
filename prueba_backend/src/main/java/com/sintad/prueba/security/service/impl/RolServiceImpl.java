@@ -12,10 +12,10 @@ public class RolServiceImpl implements RolService {
     @Autowired
     RolRepository rolRepository;
     @Override
-    public void createRol() {
+    public Rol createRol() {
         Rol roldefault=new Rol();
-        roldefault.setId(1);
         roldefault.setName(ERol.ADMIN);
         rolRepository.save(roldefault);
+        return roldefault;
     }
 }
