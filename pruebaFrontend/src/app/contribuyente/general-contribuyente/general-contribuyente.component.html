@@ -1,0 +1,33 @@
+<div class="container-fluid col-md-4">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">
+        {{ value }} nuevo contribuyente
+      </h6>
+    </div>
+    <div class="card-body">
+      <form
+        [formGroup]="tipoForm"
+        (ngSubmit)="handleSubmit(tipoForm.value)"
+        autocomplete="off"
+      >
+        <div class="form-group">
+          <label for="inputAddress">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre"
+            formControlName="nombre"
+            [ngClass]="{ 'is-invalid': submit && f.nombre.errors }"
+          />
+          <div *ngIf="submit && f.nombre.errors" class="invalid-feedback">
+            <div *ngIf="f.nombre.errors.required">
+              Es necesario llenar este campo
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">{{ value }}</button>
+      </form>
+    </div>
+  </div>
+</div>

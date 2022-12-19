@@ -1,0 +1,145 @@
+<div class="container-fluid col-md-4">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">
+        {{ value }} nuevo documento
+      </h6>
+    </div>
+    <div class="card-body">
+      <form
+        [formGroup]="entidadForm"
+        (ngSubmit)="handleSubmit(entidadForm.value)"
+        autocomplete="off"
+      >
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <label for="inputEmail4">N° Documento</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="N° Documento"
+              formControlName="nroDocumento"
+              [ngClass]="{ 'is-invalid': submit && f.nroDocumento.errors }"
+            />
+            <div
+              *ngIf="submit && f.nroDocumento.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.nroDocumento.errors.required">
+                Es necesario llenar este campo
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputPassword4">Teléfono</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Teléfono"
+              formControlName="telefono"
+              [ngClass]="{ 'is-invalid': submit && f.telefono.errors }"
+            />
+            <div *ngIf="submit && f.telefono.errors" class="invalid-feedback">
+              <div *ngIf="f.telefono.errors.required">
+                Es necesario llenar este campo
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Nombre Comercial</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre Comercial"
+            formControlName="nombreComercial"
+            [ngClass]="{ 'is-invalid': submit && f.nombreComercial.errors }"
+          />
+          <div
+            *ngIf="submit && f.nombreComercial.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.nombreComercial.errors.required">
+              Es necesario llenar este campo
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Razón Social</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Razón Social"
+            formControlName="razonSocial"
+            [ngClass]="{ 'is-invalid': submit && f.razonSocial.errors }"
+          />
+          <div *ngIf="submit && f.razonSocial.errors" class="invalid-feedback">
+            <div *ngIf="f.razonSocial.errors.required">
+              Es necesario llenar este campo
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Dirección</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Dirección"
+            formControlName="direccion"
+            [ngClass]="{ 'is-invalid': submit && f.direccion.errors }"
+          />
+          <div *ngIf="submit && f.direccion.errors" class="invalid-feedback">
+            <div *ngIf="f.direccion.errors.required">
+              Es necesario llenar este campo
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputState">Tipo de documento</label>
+            <select
+              id="inputState"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submit && f.idTipoDocumento.errors }"
+              formControlName="idTipoDocumento"
+            >
+              <option value="">Seleccionar...</option>
+              <option *ngFor="let documento of documentos" value="{{documento.id}}">{{ documento.nombre }}</option>
+            </select>
+            <div
+              *ngIf="submit && f.idTipoDocumento.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.idTipoDocumento.errors.required">
+                Es necesario llenar este campo
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputState">Tipo de contribuyente</label>
+            <select
+              id="inputState"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': submit && f.idTipoContribuyente.errors
+              }"
+              formControlName="idTipoContribuyente"
+            >
+              <option value="">Seleccionar...</option>
+              <option  *ngFor="let contribuyente of contribuyentes" value="{{contribuyente.id}}">{{ contribuyente.nombre }}</option>
+            </select>
+            <div
+              *ngIf="submit && f.idTipoContribuyente.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.idTipoContribuyente.errors.required">
+                Es necesario llenar este campo
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </form>
+    </div>
+  </div>
+</div>

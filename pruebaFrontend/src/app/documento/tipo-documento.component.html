@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="d-sm-flex justify-content-between mb-1">
+    <h4>Tipo de documento</h4>
+    <button
+      class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+      (click)="add()"
+    >
+      <i class="fas fa-plus fa-sm text-white-50 ml-auto"></i>
+      Agregar
+    </button>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Tipos de documento</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let tipo of tipos, let i=index'>
+              <td>{{ i + 1 }}</td>
+              <td>{{ tipo.codigo }}</td>
+              <td>{{ tipo.nombre }}</td>
+              <td>{{ tipo.descripcion }}</td>
+              <td>
+                <button
+                  class="btn btn-warning"
+                  (click)="update(tipo.id)"
+                >
+                  <i class="fas fa-pencil-alt fa-sm text-white-50 ml-auto"></i>
+                </button>
+                <button class="btn btn-danger" style="margin-left: 10px" (click) = "delete(tipo.id)">
+                  <i class="fas fa-trash fa-sm text-white-50"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
